@@ -46,9 +46,9 @@ function Header() {
         navigate("/login");
     };
 
-    console.log("User in Header:", user);
-    console.log("Display Name:", displayName);
-    console.log("Avatar URL:", avatarUrl);
+    // console.log("User in Header:", user);
+    // console.log("Display Name:", displayName);
+    // console.log("Avatar URL:", avatarUrl);
 
     return (
 
@@ -80,7 +80,7 @@ function Header() {
                     }}
                 >
 
-                    <Avatar src={avatarUrl}>
+                    <Avatar src={avatarUrl} onClick={() => navigate("/me")} sx={{ cursor: "pointer" }}>
                         {
                             displayName
                                 ?.charAt(0)

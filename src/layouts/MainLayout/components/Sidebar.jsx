@@ -21,10 +21,13 @@ from "@mui/icons-material/Receipt";
 
 import PeopleIcon
 from "@mui/icons-material/People";
+import { useNavigate } from "react-router-dom";
 
 const drawerWidth = 260;
 
 function Sidebar() {
+
+    const navigate = useNavigate();
 
     return (
 
@@ -58,7 +61,7 @@ function Sidebar() {
 
             <List>
 
-                <ListItemButton>
+                {/* <ListItemButton>
 
                     <ListItemIcon>
                         <DashboardIcon />
@@ -68,9 +71,9 @@ function Sidebar() {
                         primary="Dashboard"
                     />
 
-                </ListItemButton>
+                </ListItemButton> */}
 
-                <ListItemButton>
+                <ListItemButton onClick={() => navigate("/rooms")}>
 
                     <ListItemIcon>
                         <MeetingRoomIcon />

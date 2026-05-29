@@ -62,7 +62,7 @@ function LoginPage() {
 
             await dispatch(fetchMyInfo());
 
-            navigate("/me");
+            navigate("/rooms");
             // alert("Login successful! You can now access the dashboard.");
         }
     };
