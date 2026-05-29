@@ -1,7 +1,27 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { privateRoutes, publicRoutes } from "./routes/routes";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchMyInfo } from "./features/auth/store/authThunk";
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 function App() {
+  const dispatch = useDispatch();
+
+    const accessToken =
+        useSelector(
+            state =>
+                state.auth.accessToken
+        );
+
+    useEffect(() => {
+
+        if (accessToken) {
+            dispatch(fetchMyInfo());
+        }
+
+    }, [accessToken]);
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -32,9 +52,11 @@ function App() {
                   key={index}
                   path={route.path}
                   element={
-                    <Layout>
-                      <Page />
-                    </Layout>
+                    <ProtectedRoute>
+                      <Layout>
+                        <Page />
+                      </Layout>
+                    </ProtectedRoute>
                   }
                 />
               );

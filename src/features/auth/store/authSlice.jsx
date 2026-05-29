@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchMyInfo, login } from "./authThunk";
+import { fetchMyInfo, login, logout } from "./authThunk";
 
 const initialState = {
 
@@ -20,16 +20,16 @@ const authSlice = createSlice({
 
     reducers: {
 
-        logout: (state) => {
+        // logout: (state) => {
 
-            state.accessToken = null;
+        //     state.accessToken = null;
 
-            state.user = null;
+        //     state.user = null;
 
-            localStorage.removeItem(
-                "accessToken"
-            );
-        }
+        //     localStorage.removeItem(
+        //         "accessToken"
+        //     );
+        // }
     },
 
     extraReducers: (builder) => {
@@ -85,11 +85,31 @@ const authSlice = createSlice({
                 state.loading = false;
 
                 state.error = action.payload;
-            });
+            })
+            .addCase(
+                logout.fulfilled,
+                (state) => {
+
+                    state.accessToken = null;
+
+                    state.user = null;
+
+                    state.error = null;
+                }
+            )
+            .addCase(
+                logout.rejected,
+                (state) => {
+
+                    state.accessToken = null;
+
+                    state.user = null;
+                }
+            );
     }
 });
 
-export const { logout } =
-    authSlice.actions;
+// export const { logout } =
+//     authSlice.actions;
 
 export default authSlice.reducer;

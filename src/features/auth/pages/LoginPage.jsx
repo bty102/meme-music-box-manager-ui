@@ -62,8 +62,8 @@ function LoginPage() {
 
             await dispatch(fetchMyInfo());
 
-            // navigate("/");
-            alert("Login successful! You can now access the dashboard.");
+            navigate("/me");
+            // alert("Login successful! You can now access the dashboard.");
         }
     };
 

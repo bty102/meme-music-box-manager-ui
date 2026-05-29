@@ -18,3 +18,18 @@ export const getMyInfoApi = async () => {
 
     return response.data;
 };
+
+export const logoutApi = async (
+    accessToken
+) => {
+
+    const response =
+        await axiosClient.post(
+            "/api/auth/logout",
+            {
+                accessToken
+            }
+        );
+
+    return response.data;
+};

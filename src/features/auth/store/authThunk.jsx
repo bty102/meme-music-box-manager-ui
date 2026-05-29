@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getMyInfoApi, loginApi } from "../services/authApi";
+import { getMyInfoApi, loginApi, logoutApi } from "../services/authApi";
 
 export const login = createAsyncThunk(
     "auth/login",
@@ -47,6 +47,43 @@ export const fetchMyInfo = createAsyncThunk(
                 error.response?.data?.message
                     || "Fetch profile failed"
             );
+        }
+    }
+);
+
+export const logout = createAsyncThunk(
+    "auth/logout",
+
+    async (_, thunkAPI) => {
+
+        try {
+
+            const state =
+                thunkAPI.getState();
+
+            const accessToken =
+                state.auth.accessToken;
+
+            if (accessToken) {
+
+                await logoutApi(
+                    accessToken
+                );
+            }
+
+            localStorage.removeItem(
+                "accessToken"
+            );
+
+            return null;
+
+        } catch (error) {
+
+            localStorage.removeItem(
+                "accessToken"
+            );
+
+            return null;
         }
     }
 );
