@@ -50,3 +50,35 @@ export const searchRoomsApi = async ({
 
     return response.data;
 };
+
+export const openRoomApi = async ({
+    roomId,
+    memberAccId,
+}) => {
+
+    const params = {
+        roomId,
+    };
+
+    if (memberAccId !== undefined && memberAccId !== null) {
+        params.memberAccId = memberAccId;
+    }
+
+    const response = await axiosClient.get(
+        "/api/rooms/open",
+        {
+            params,
+        }
+    );
+
+    return response.data;
+};
+
+export const getRoomInfoApi = async (roomId) => {
+
+    const response = await axiosClient.get(
+        `/api/rooms/info/${roomId}`
+    );
+
+    return response.data.result;
+};

@@ -5,12 +5,44 @@ import {
     Chip,
     Stack,
     Box,
+    ButtonGroup,
+    Button,
 } from "@mui/material";
 import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
 import PeopleIcon from "@mui/icons-material/People";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import { openRoomApi } from "../services/roomApi";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchRooms, searchRooms } from "../store/roomThunk";
+import { useNavigate } from "react-router-dom";
 
 function RoomItem({ room }) {
+
+    const dispatch = useDispatch();
+
+    const navigate = useNavigate();
+
+  const {
+    rooms,
+
+    areaId,
+
+    searchKeyword,
+
+    pageNumber,
+    pageSize,
+    totalPages,
+    totalElements,
+
+    mode,
+
+    loading,
+    error,
+  } = useSelector((state) => state.room);
+
+  const user = useSelector((state) => state.auth.user);
+
+  const isEmployee = user?.role === "EMPLOYEE";
 
     const getStatusConfig = () => {
 
@@ -55,6 +87,62 @@ function RoomItem({ room }) {
     };
 
     const status = getStatusConfig();
+
+    const handleOpenRoom = async() => {
+        if(confirm(`Bạn có chắc chắn muốn mở phòng ${room.roomNumber}?`)) {
+            try {
+                const response = await openRoomApi({ roomId: room.id });
+                alert(`Phòng ${room.roomNumber} đã được mở thành công!`);
+                if(isEmployee) {
+                    if(mode === "SEARCH") {
+                        dispatch(
+                            searchRooms({
+                                q: searchKeyword,
+                                isActive: true,
+                                pageNumber,
+                                pageSize,
+                            }),
+                        );
+                    } else {
+                        dispatch(
+                            fetchRooms({
+                                areaId,
+                                isActive: true,
+                                pageNumber,
+                                pageSize,
+                            }),
+                        );
+                    }
+                } else {
+                    if(mode === "SEARCH") {
+                        dispatch(
+                            searchRooms({
+                                q: searchKeyword,
+                                pageNumber,
+                                pageSize,
+                            }),
+                        );
+                    } else {
+                        dispatch(
+                            fetchRooms({
+                                areaId,
+                                pageNumber,
+                                pageSize,
+                            }),
+                        );
+                    }
+                }
+            } catch (error) {
+                // console.error("Lỗi khi mở phòng:", error);
+                // alert("Có lỗi xảy ra khi mở phòng. Vui lòng thử lại.");
+                alert(error.response?.data?.message || "Có lỗi xảy ra khi mở phòng. Vui lòng thử lại.");
+            }
+        }
+    }
+
+    const handleViewDetail = () => {
+        navigate(`/rooms/detail/${room.id}`);
+    }
 
     return (
         <Card
@@ -163,6 +251,13 @@ function RoomItem({ room }) {
                     </Box>
 
                 </Stack>
+
+                <Box>
+                    <ButtonGroup variant="text" size="small">
+                        <Button onClick={handleOpenRoom}>Mở phòng</Button>
+                        <Button onClick={handleViewDetail}>Xem chi tiết</Button>
+                    </ButtonGroup>
+                </Box>
 
             </CardContent>
         </Card>
