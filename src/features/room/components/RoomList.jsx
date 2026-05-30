@@ -19,7 +19,7 @@ function RoomList() {
     }
 
     return (
-        <Box>
+        <Box sx={{ mb: 3 }}>
             <Grid container spacing={3}>
                 {rooms.map((room) => (
                     <Grid

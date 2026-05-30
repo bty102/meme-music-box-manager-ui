@@ -84,6 +84,7 @@ function RoomItem({ room }) {
                     justifyContent="space-between"
                     alignItems="center"
                     mb={2}
+                    sx={{justifyContent: "space-between", alignItems: "center", mb: 2}}
                 >
                     <Typography
                         variant="h5"
@@ -112,6 +113,7 @@ function RoomItem({ room }) {
                         display="flex"
                         alignItems="center"
                         gap={1}
+                        sx={{display: "flex", alignItems: "center", gap: 1}}
                     >
                         <PeopleIcon
                             fontSize="small"
@@ -127,6 +129,7 @@ function RoomItem({ room }) {
                         display="flex"
                         alignItems="center"
                         gap={1}
+                        sx={{display: "flex", alignItems: "center", gap: 1}}
                     >
                         <AttachMoneyIcon
                             fontSize="small"
@@ -147,6 +150,7 @@ function RoomItem({ room }) {
                         display="flex"
                         alignItems="center"
                         gap={1}
+                        sx={{display: "flex", alignItems: "center", gap: 1}}
                     >
                         <MeetingRoomIcon
                             fontSize="small"

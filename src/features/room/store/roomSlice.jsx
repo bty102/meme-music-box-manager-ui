@@ -1,75 +1,94 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchRooms } from "./roomThunk";
+import { fetchRooms, searchRooms } from "./roomThunk";
 
 const initialState = {
-    rooms: [],
+  rooms: [],
 
-    areaId: null,   
+  areaId: null,
 
-    pageNumber: 0,
-    pageSize: 5,
-    totalPages: 0,
-    totalElements: 0,
+  searchKeyword: "",
 
-    loading: false,
-    error: null,
+  pageNumber: 0,
+  pageSize: 5,
+  totalPages: 0,
+  totalElements: 0,
+
+  mode: "LIST", // LIST | SEARCH
+
+  loading: false,
+  error: null,
 };
 
 const roomSlice = createSlice({
-    name: "room",
+  name: "room",
 
-    initialState,
+  initialState,
 
-    reducers: {
-
-        clearRooms(state) {
-            state.rooms = [];
-        },
-
+  reducers: {
+    clearRooms(state) {
+      state.rooms = [];
     },
+  },
 
-    extraReducers: (builder) => {
+  extraReducers: (builder) => {
+    builder
 
-        builder
+      .addCase(fetchRooms.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
 
-            .addCase(fetchRooms.pending, (state) => {
-                state.loading = true;
-                state.error = null;
-            })
+      .addCase(fetchRooms.fulfilled, (state, action) => {
+        state.loading = false;
 
-            .addCase(fetchRooms.fulfilled, (state, action) => {
+        state.rooms = action.payload.content;
 
-                state.loading = false;
+        state.pageNumber = action.payload.page.number;
 
-                state.rooms = action.payload.content;
+        state.pageSize = action.payload.page.size;
 
-                state.pageNumber =
-                    action.payload.page.number;
+        state.totalPages = action.payload.page.totalPages;
 
-                state.pageSize =
-                    action.payload.page.size;
+        state.totalElements = action.payload.page.totalElements;
 
-                state.totalPages =
-                    action.payload.page.totalPages;
+        state.areaId = action.meta.arg.areaId;
+        state.mode = "LIST";
+      })
 
-                state.totalElements =
-                    action.payload.page.totalElements;
+      .addCase(fetchRooms.rejected, (state, action) => {
+        state.loading = false;
 
-                state.areaId = action.meta.arg.areaId;
+        state.error = action.payload;
+      })
+      .addCase(searchRooms.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
 
-            })
+      .addCase(searchRooms.fulfilled, (state, action) => {
+        state.loading = false;
 
-            .addCase(fetchRooms.rejected, (state, action) => {
+        state.rooms = action.payload.content;
 
-                state.loading = false;
+        state.pageNumber = action.payload.page.number;
 
-                state.error = action.payload;
-            });
-    },
+        state.pageSize = action.payload.page.size;
+
+        state.totalPages = action.payload.page.totalPages;
+
+        state.totalElements = action.payload.page.totalElements;
+
+        state.searchKeyword = action.meta.arg.q;
+        state.mode = "SEARCH";
+      })
+
+      .addCase(searchRooms.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      });
+  },
 });
 
-export const {
-    clearRooms,
-} = roomSlice.actions;
+export const { clearRooms } = roomSlice.actions;
 
 export default roomSlice.reducer;

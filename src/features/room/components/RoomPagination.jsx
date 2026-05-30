@@ -1,5 +1,5 @@
 import { Pagination } from "@mui/material";
-import { fetchRooms } from "../store/roomThunk";
+import { fetchRooms, searchRooms } from "../store/roomThunk";
 import { useDispatch, useSelector } from "react-redux";
 
 function RoomPagination() {
@@ -9,10 +9,15 @@ function RoomPagination() {
 
     areaId,
 
+    searchKeyword,
+
     pageNumber,
     pageSize,
     totalPages,
     totalElements,
+
+    mode,
+
     loading,
     error,
   } = useSelector((state) => state.room);
@@ -22,24 +27,46 @@ function RoomPagination() {
   const isEmployee = user?.role === "EMPLOYEE";
 
   const handlePageChange = (event, value) => {
-    if(isEmployee == undefined) return;
-    if (isEmployee) {
-      dispatch(
-        fetchRooms({
-          areaId,
-          isActive: true,
-          pageNumber: value - 1,
-          pageSize,
-        }),
-      );
+    if (isEmployee == undefined) return;
+    if (mode === "SEARCH") {
+      if (isEmployee) {
+        dispatch(
+          searchRooms({
+            q: searchKeyword,
+            isActive: true,
+            pageNumber: value - 1,
+            pageSize,
+          }),
+        );
+      } else {
+        dispatch(
+          searchRooms({
+            q: searchKeyword,
+            pageNumber: value - 1,
+            pageSize,
+          }),
+        );
+      }
+
     } else {
-      dispatch(
-        fetchRooms({
-          areaId,
-          pageNumber: value - 1,
-          pageSize,
-        }),
-      );
+      if (isEmployee) {
+        dispatch(
+          fetchRooms({
+            areaId,
+            isActive: true,
+            pageNumber: value - 1,
+            pageSize,
+          }),
+        );
+      } else {
+        dispatch(
+          fetchRooms({
+            areaId,
+            pageNumber: value - 1,
+            pageSize,
+          }),
+        );
+      }
     }
   };
   return (
