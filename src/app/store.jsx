@@ -6,6 +6,7 @@ from "../features/auth/store/authSlice";
 
 import areaReducer from "../features/area/store/areaSlice"
 import roomReducer from "../features/room/store/roomSlice";
+import invoiceReducer from "../features/invoice/store/invoiceSlice";
 
 export const store = configureStore({
 
@@ -13,5 +14,6 @@ export const store = configureStore({
         auth: authReducer,
         area: areaReducer,
         room: roomReducer,
+        invoice: invoiceReducer,
     }
 });

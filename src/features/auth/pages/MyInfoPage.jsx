@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 
 import { useSelector } from "react-redux";
+import { formatDateTime } from "../../../util/formatDateTime";
 
 function MyInfoPage() {
 
@@ -40,6 +41,7 @@ function MyInfoPage() {
                 variant="h4"
                 fontWeight="bold"
                 mb={3}
+                sx={{fontWeight: "bold",mb: 3}}
             >
                 My Profile
             </Typography>
@@ -73,6 +75,7 @@ function MyInfoPage() {
                             <Stack
                                 alignItems="center"
                                 spacing={2}
+                                sx={{alignItems: "center",spacing: 2}}
                             >
 
                                 <Avatar
@@ -94,6 +97,7 @@ function MyInfoPage() {
                                     variant="h5"
                                     fontWeight="bold"
                                     textAlign="center"
+                                    sx={{fontWeight: "bold",textAlign: "center"}}
                                 >
                                     {displayName}
                                 </Typography>
@@ -119,6 +123,7 @@ function MyInfoPage() {
                                 variant="h6"
                                 fontWeight="bold"
                                 mb={2}
+                                sx={{fontWeight: "bold",mb: 2}}
                             >
                                 Account Information
                             </Typography>
@@ -146,6 +151,7 @@ function MyInfoPage() {
 
                                     <Typography
                                         fontWeight="bold"
+                                        sx={{fontWeight: "bold"}}
                                     >
                                         {user?.email}
                                     </Typography>
@@ -166,6 +172,7 @@ function MyInfoPage() {
 
                                     <Typography
                                         fontWeight="bold"
+                                        sx={{fontWeight: "bold"}}
                                     >
                                         {user?.role}
                                     </Typography>
@@ -185,9 +192,10 @@ function MyInfoPage() {
 
                                     <Typography
                                         fontWeight="bold"
+                                        sx={{fontWeight: "bold"}}
                                     >
                                         {
-                                            user?.createdAt
+                                            formatDateTime(user?.createdAt)
                                         }
                                     </Typography>
 
@@ -204,6 +212,7 @@ function MyInfoPage() {
                                             fontWeight="bold"
                                             mt={5}
                                             mb={2}
+                                            sx={{fontWeight: "bold",mt: 5,mb: 2}}
                                         >
                                             Employee Information
                                         </Typography>
@@ -233,6 +242,7 @@ function MyInfoPage() {
 
                                                 <Typography
                                                     fontWeight="bold"
+                                                    sx={{fontWeight: "bold"}}
                                                 >
                                                     {
                                                         employee?.employeeCode
@@ -255,6 +265,7 @@ function MyInfoPage() {
 
                                                 <Typography
                                                     fontWeight="bold"
+                                                    sx={{fontWeight: "bold"}}
                                                 >
                                                     {
                                                         employee?.phoneNumber
@@ -277,6 +288,7 @@ function MyInfoPage() {
 
                                                 <Typography
                                                     fontWeight="bold"
+                                                    sx={{fontWeight: "bold"}}
                                                 >
                                                     {
                                                         employee?.nationalId
@@ -299,6 +311,7 @@ function MyInfoPage() {
 
                                                 <Typography
                                                     fontWeight="bold"
+                                                    sx={{fontWeight: "bold"}}
                                                 >
                                                     {
                                                         employee?.isMale
@@ -323,6 +336,7 @@ function MyInfoPage() {
 
                                                 <Typography
                                                     fontWeight="bold"
+                                                    sx={{fontWeight: "bold"}}
                                                 >
                                                     {
                                                         employee?.dateOfBirth
@@ -344,6 +358,7 @@ function MyInfoPage() {
 
                                                 <Typography
                                                     fontWeight="bold"
+                                                    sx={{fontWeight: "bold"}}
                                                 >
                                                     {
                                                         employee?.address

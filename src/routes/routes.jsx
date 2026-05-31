@@ -8,6 +8,8 @@ import InvoiceMemberUpdatePage from "../features/invoice/pages/InvoiceMemberUpda
 import InvoiceProductUpdatePage from "../features/invoice/pages/InvoiceProductUpdatePage"
 import RoomTransferListPage from "../features/room/pages/RoomTransferListPage"
 import InvoiceDetailPage from "../features/invoice/pages/InvoiceDetailPage"
+import RoomInvoiceListPage from "../features/room/pages/RoomInvoiceListPage"
+import InvoiceListPage from "../features/invoice/pages/InvoiceListPage"
 
 const publicRoutes = [
     {path: '/login', page: LoginPage, layout: Fragment},
@@ -21,6 +23,8 @@ const privateRoutes = [
     {path: '/invoices/update/product/:invoiceId', page: InvoiceProductUpdatePage, layout: MainLayout},
     {path: '/invoices/transfer/:invoiceId', page: RoomTransferListPage, layout: MainLayout},
     {path: '/invoices/detail/:invoiceId', page: InvoiceDetailPage, layout: MainLayout},
+    {path: '/rooms/invoices/:roomId', page: RoomInvoiceListPage, layout: MainLayout},
+    {path: '/invoices', page: InvoiceListPage, layout: MainLayout},
 ]
 
 export { publicRoutes, privateRoutes }

@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  ButtonGroup,
   Chip,
   Divider,
   Paper,
@@ -10,7 +11,7 @@ import {
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getRoomInfoApi } from "../services/roomApi";
-import { getTemporaryInvoiceApi } from "../../invoice/services/invoiceApi";
+import { checkOutInvoiceApi, getTemporaryInvoiceApi } from "../../invoice/services/invoiceApi";
 
 function RoomDetailPage() {
   const { id } = useParams();
@@ -51,6 +52,19 @@ function RoomDetailPage() {
     };
     fetchTemporaryInvoice();
   }, [id]);
+
+  const handleCheckOut = async () => {
+    if(!confirm("Bạn có chắc chắn muốn trả phòng?")) {
+      return;
+    }
+    try {
+      await checkOutInvoiceApi(invoice.id);
+      navigate(`/invoices/detail/${invoice.id}`);
+    } catch (err) {
+      // console.log(err);
+      alert(err.response?.data?.message || "Lỗi khi trả phòng");
+    }
+  };
 
   return (
     <Box
@@ -194,6 +208,15 @@ function RoomDetailPage() {
               >
                 {room?.isActive ? "Đang hoạt động" : "Ngừng hoạt động"}
               </Typography>
+            </Box>
+
+            <Divider />
+
+            <Box sx={{ display: "flex", justifyContent: "center" }}>
+              <ButtonGroup>
+                <Button onClick={() => {navigate(`/rooms/invoices/${room?.id}`)}}>Danh sách hóa đơn</Button>
+                {invoice && <Button onClick={handleCheckOut}>Trả phòng</Button>}
+              </ButtonGroup>
             </Box>
           </Stack>
         </Paper>
@@ -386,7 +409,9 @@ function RoomDetailPage() {
                   >
                     {invoice.finalAmount?.toLocaleString("vi-VN") || "---"} ₫
                   </Typography>
-                  <Button onClick={() => navigate(`/invoices/transfer/${invoice.id}`)}>
+                  <Button
+                    onClick={() => navigate(`/invoices/transfer/${invoice.id}`)}
+                  >
                     Chuyển phòng
                   </Button>
                 </Box>

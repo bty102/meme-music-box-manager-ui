@@ -1,5 +1,7 @@
 import {
     Box,
+    Button,
+    ButtonGroup,
     Chip,
     CircularProgress,
     Divider,
@@ -20,7 +22,8 @@ import Inventory2Icon from "@mui/icons-material/Inventory2";
 
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getInvoiceDetailApi, getProductsOfInvoiceApi, getRoomsOfInvoiceApi } from "../services/invoiceApi";
+import { getInvoiceDetailApi, getProductsOfInvoiceApi, getRoomsOfInvoiceApi, paymentConfirmationApi } from "../services/invoiceApi";
+import { formatDateTime } from "../../../util/formatDateTime";
 
 
 function InvoiceDetailPage() {
@@ -120,6 +123,21 @@ function InvoiceDetailPage() {
                 <CircularProgress />
             </Box>
         );
+    }
+
+    const handleConfirmPayment = async () => {
+        if(!confirm("Xác nhận đã thanh toán hóa đơn này?")) {
+            return;
+        }
+
+        try {
+            await paymentConfirmationApi(invoiceId);
+            alert("Đã xác nhận thanh toán cho hóa đơn này.");
+            // Cập nhật lại trạng thái hóa đơn
+            window.location.reload();
+        } catch (error) {
+            alert(error.response?.data?.message || "Có lỗi xảy ra khi xác nhận thanh toán.");
+        }
     }
 
     return (
@@ -297,7 +315,9 @@ function InvoiceDetailPage() {
                                 }
                             >
                                 {
-                                    invoice?.createdAt
+                                    formatDateTime(
+                                        invoice?.createdAt
+                                    )
                                 }
                             </Typography>
                         </Box>
@@ -503,13 +523,17 @@ function InvoiceDetailPage() {
 
                                         <TableCell>
                                             {
-                                                item.checkInAt
+                                                formatDateTime(
+                                                    item.checkInAt
+                                                )
                                             }
                                         </TableCell>
 
                                         <TableCell>
                                             {
-                                                item.checkOutAt
+                                                formatDateTime(
+                                                    item.checkOutAt
+                                                )
                                             }
                                         </TableCell>
 
@@ -667,6 +691,19 @@ function InvoiceDetailPage() {
                     </Table>
                 </TableContainer>
             </Paper>
+            <Box sx={{
+                display: "flex",
+                justifyContent: "flex-end",
+                mt: 2,
+            }}>
+                <ButtonGroup>
+                    {invoice?.status === "UNPAID" && (
+                    <Button onClick={handleConfirmPayment} variant="contained" color="primary">
+                        Xác nhận đã thanh toán
+                    </Button>
+                    )}
+                </ButtonGroup>            
+            </Box>
         </Box>
     );
 }

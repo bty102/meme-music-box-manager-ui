@@ -85,7 +85,7 @@ function Sidebar() {
 
                 </ListItemButton>
 
-                <ListItemButton>
+                <ListItemButton onClick={() => navigate("/invoices")}>
 
                     <ListItemIcon>
                         <ReceiptIcon />

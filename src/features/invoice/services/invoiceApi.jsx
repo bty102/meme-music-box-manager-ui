@@ -153,3 +153,91 @@ export const getRoomsOfInvoiceApi = async (
 
     return response.data.result;
 };
+
+export const getInvoicesOfRoomApi = async ({
+    roomId,
+    pageNumber = 0,
+    pageSize = 10,
+}) => {
+
+    const response = await axiosClient.get(
+        "/api/invoices/ofRoom",
+        {
+            params: {
+                roomId,
+                pageNumber,
+                pageSize,
+            },
+        }
+    );
+
+    return response.data.result;
+};
+
+export const checkOutInvoiceApi = async (
+    invoiceId
+) => {
+
+    const response = await axiosClient.get(
+        "/api/invoices/checkOut",
+        {
+            params: {
+                invoiceId,
+            },
+        }
+    );
+
+    return response.data;
+};
+
+export const paymentConfirmationApi = async (
+    invoiceId
+) => {
+
+    const response = await axiosClient.get(
+        "/api/invoices/paymentConfirmation",
+        {
+            params: {
+                invoiceId,
+            },
+        }
+    );
+
+    return response.data;
+};
+
+export const getInvoicesApi = async ({
+    pageNumber = 0,
+    pageSize = 10,
+}) => {
+
+    const response = await axiosClient.get(
+        "/api/invoices",
+        {
+            params: {
+                pageNumber,
+                pageSize,
+            },
+        }
+    );
+
+    return response.data.result;
+};
+
+export const getInvoicesCreatedByApi = async ({
+    pageNumber = 0,
+    pageSize = 10,
+}) => {
+
+    const response = await axiosClient.get(
+        "/api/invoices/createdBy",
+        {
+            params: {
+                pageNumber,
+                pageSize,
+            },
+        }
+    );
+
+    return response.data.result;
+};
