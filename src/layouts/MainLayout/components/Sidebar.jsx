@@ -20,11 +20,17 @@ import PeopleIcon from "@mui/icons-material/People";
 import { useNavigate } from "react-router-dom";
 import GridViewIcon from "@mui/icons-material/GridView";
 import Inventory2Icon from "@mui/icons-material/Inventory2";
+import LocalOfferIcon from "@mui/icons-material/LocalOffer";
+import { useSelector } from "react-redux";
 
 const drawerWidth = 260;
 
 function Sidebar() {
   const navigate = useNavigate();
+
+  const user = useSelector((state) => state.auth.user);
+
+  const isAdmin = user?.role === "ADMIN";
 
   return (
     <Drawer
@@ -93,6 +99,16 @@ function Sidebar() {
 
           <ListItemText primary="Products" />
         </ListItemButton>
+
+        {isAdmin && (
+          <ListItemButton onClick={() => navigate("/pointDiscounts")}>
+            <ListItemIcon>
+              <LocalOfferIcon />
+            </ListItemIcon>
+
+            <ListItemText primary="Point Discounts" />
+          </ListItemButton>
+        )}
 
         {/* <ListItemButton>
 

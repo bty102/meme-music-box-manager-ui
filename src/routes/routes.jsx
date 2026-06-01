@@ -23,6 +23,7 @@ import ProductDetailPage from "../features/product/pages/ProductDetailPage"
 import ProductCreatePage from "../features/product/pages/ProductCreatePage"
 import ProductUpdatePage from "../features/product/pages/ProductUpdatePage"
 import ProductUpdateImagePage from "../features/product/pages/ProductUpdateImagePage"
+import PointDiscountListPage from "../features/pointDiscount/pages/PointDiscountListPage"
 
 const publicRoutes = [
     {path: '/login', page: LoginPage, layout: Fragment},
@@ -51,6 +52,7 @@ const privateRoutes = [
     {path: '/products/create', page: ProductCreatePage, layout: MainLayout},
     {path: '/products/update/:productId', page: ProductUpdatePage, layout: MainLayout},
     {path: '/products/updateImage/:productId', page: ProductUpdateImagePage, layout: MainLayout},
+    {path: '/pointDiscounts', page: PointDiscountListPage, layout: MainLayout},
 ]
 
 export { publicRoutes, privateRoutes }

@@ -6,6 +6,7 @@ import areaReducer from "../features/area/store/areaSlice";
 import roomReducer from "../features/room/store/roomSlice";
 import invoiceReducer from "../features/invoice/store/invoiceSlice";
 import productReducer from "../features/product/store/productSlice";
+import pointDiscountReducer from "../features/pointDiscount/store/pointDiscountSlice";
 
 export const store = configureStore({
   reducer: {
@@ -14,5 +15,6 @@ export const store = configureStore({
     room: roomReducer,
     invoice: invoiceReducer,
     product: productReducer,
+    pointDiscount: pointDiscountReducer,
   },
 });
