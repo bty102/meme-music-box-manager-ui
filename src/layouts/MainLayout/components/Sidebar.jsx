@@ -1,67 +1,55 @@
 import {
-    Box,
-    Divider,
-    Drawer,
-    List,
-    ListItemButton,
-    ListItemIcon,
-    ListItemText,
-    Toolbar,
-    Typography
+  Box,
+  Divider,
+  Drawer,
+  List,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Toolbar,
+  Typography,
 } from "@mui/material";
 
-import DashboardIcon
-from "@mui/icons-material/Dashboard";
+import DashboardIcon from "@mui/icons-material/Dashboard";
 
-import MeetingRoomIcon
-from "@mui/icons-material/MeetingRoom";
+import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
 
-import ReceiptIcon
-from "@mui/icons-material/Receipt";
+import ReceiptIcon from "@mui/icons-material/Receipt";
 
-import PeopleIcon
-from "@mui/icons-material/People";
+import PeopleIcon from "@mui/icons-material/People";
 import { useNavigate } from "react-router-dom";
+import GridViewIcon from "@mui/icons-material/GridView";
 
 const drawerWidth = 260;
 
 function Sidebar() {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  return (
+    <Drawer
+      variant="permanent"
+      sx={{
+        width: drawerWidth,
+        flexShrink: 0,
 
-    return (
+        "& .MuiDrawer-paper": {
+          width: drawerWidth,
+          boxSizing: "border-box",
+        },
+      }}
+    >
+      <Toolbar />
 
-        <Drawer
-            variant="permanent"
-            sx={{
-                width: drawerWidth,
-                flexShrink: 0,
+      <Box sx={{ p: 2 }}>
+        <Typography variant="subtitle2" color="text.secondary">
+          MENU
+        </Typography>
+      </Box>
 
-                "& .MuiDrawer-paper": {
-                    width: drawerWidth,
-                    boxSizing: "border-box"
-                }
-            }}
-        >
+      <Divider />
 
-            <Toolbar />
-
-            <Box sx={{ p: 2 }}>
-
-                <Typography
-                    variant="subtitle2"
-                    color="text.secondary"
-                >
-                    MENU
-                </Typography>
-
-            </Box>
-
-            <Divider />
-
-            <List>
-
-                {/* <ListItemButton>
+      <List>
+        {/* <ListItemButton>
 
                     <ListItemIcon>
                         <DashboardIcon />
@@ -73,31 +61,31 @@ function Sidebar() {
 
                 </ListItemButton> */}
 
-                <ListItemButton onClick={() => navigate("/rooms")}>
+        <ListItemButton onClick={() => navigate("/rooms")}>
+          <ListItemIcon>
+            <MeetingRoomIcon />
+          </ListItemIcon>
 
-                    <ListItemIcon>
-                        <MeetingRoomIcon />
-                    </ListItemIcon>
+          <ListItemText primary="Rooms" />
+        </ListItemButton>
 
-                    <ListItemText
-                        primary="Rooms"
-                    />
+        <ListItemButton onClick={() => navigate("/invoices")}>
+          <ListItemIcon>
+            <ReceiptIcon />
+          </ListItemIcon>
 
-                </ListItemButton>
+          <ListItemText primary="Invoices" />
+        </ListItemButton>
 
-                <ListItemButton onClick={() => navigate("/invoices")}>
+        <ListItemButton onClick={() => navigate("/areas")}>
+          <ListItemIcon>
+            <GridViewIcon />
+          </ListItemIcon>
 
-                    <ListItemIcon>
-                        <ReceiptIcon />
-                    </ListItemIcon>
+          <ListItemText primary="Areas" />
+        </ListItemButton>
 
-                    <ListItemText
-                        primary="Invoices"
-                    />
-
-                </ListItemButton>
-
-                <ListItemButton>
+        {/* <ListItemButton>
 
                     <ListItemIcon>
                         <PeopleIcon />
@@ -107,12 +95,10 @@ function Sidebar() {
                         primary="Members"
                     />
 
-                </ListItemButton>
-
-            </List>
-
-        </Drawer>
-    );
+                </ListItemButton> */}
+      </List>
+    </Drawer>
+  );
 }
 
 export default Sidebar;

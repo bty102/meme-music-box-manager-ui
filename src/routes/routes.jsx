@@ -14,6 +14,10 @@ import RoomBookingListPage from "../features/room/pages/RoomBookingListPage"
 import BookingDetailPage from "../features/booking/pages/BookingDetailPage"
 import RoomCreatePage from "../features/room/pages/RoomCreatePage"
 import RoomUpdatePage from "../features/room/pages/RoomUpdatePage"
+import AreaListPage from "../features/area/pages/AreaListPage"
+import AreaDetailPage from "../features/area/pages/AreaDetailPage"
+import AreaCreatePage from "../features/area/pages/AreaCreatePage"
+import AreaUpdatePage from "../features/area/pages/AreaUpdatePage"
 
 const publicRoutes = [
     {path: '/login', page: LoginPage, layout: Fragment},
@@ -33,6 +37,10 @@ const privateRoutes = [
     {path: '/bookings/detail/:bookingId', page: BookingDetailPage, layout: MainLayout},
     {path: '/rooms/create', page: RoomCreatePage, layout: MainLayout},
     {path: '/rooms/update/:roomId', page: RoomUpdatePage, layout: MainLayout},
+    {path: '/areas', page: AreaListPage, layout: MainLayout},
+    {path: '/areas/detail/:areaId', page: AreaDetailPage, layout: MainLayout},
+    {path: '/areas/create', page: AreaCreatePage, layout: MainLayout},
+    {path: '/areas/update/:areaId', page: AreaUpdatePage, layout: MainLayout},
 ]
 
 export { publicRoutes, privateRoutes }

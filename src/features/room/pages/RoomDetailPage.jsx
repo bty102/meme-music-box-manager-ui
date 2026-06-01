@@ -11,7 +11,11 @@ import {
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getRoomInfoApi } from "../services/roomApi";
-import { checkOutInvoiceApi, getTemporaryInvoiceApi } from "../../invoice/services/invoiceApi";
+import {
+  checkOutInvoiceApi,
+  getTemporaryInvoiceApi,
+} from "../../invoice/services/invoiceApi";
+import { useSelector } from "react-redux";
 
 function RoomDetailPage() {
   const { id } = useParams();
@@ -22,6 +26,10 @@ function RoomDetailPage() {
   const [invoice, setInvoice] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const user = useSelector((state) => state.auth.user);
+
+  const isEmployee = user?.role === "EMPLOYEE";
 
   useEffect(() => {
     const fetchRoomInfo = async () => {
@@ -54,7 +62,7 @@ function RoomDetailPage() {
   }, [id]);
 
   const handleCheckOut = async () => {
-    if(!confirm("Bạn có chắc chắn muốn trả phòng?")) {
+    if (!confirm("Bạn có chắc chắn muốn trả phòng?")) {
       return;
     }
     try {
@@ -214,12 +222,32 @@ function RoomDetailPage() {
 
             <Box sx={{ display: "flex", justifyContent: "center" }}>
               <ButtonGroup orientation="vertical" variant="text">
-                <Button onClick={() => {navigate(`/rooms/invoices/${room?.id}`)}}>Danh sách hóa đơn</Button>
+                <Button
+                  onClick={() => {
+                    navigate(`/rooms/invoices/${room?.id}`);
+                  }}
+                >
+                  Danh sách hóa đơn
+                </Button>
 
-                <Button onClick={() => {navigate(`/rooms/bookings/${room?.id}`)}}>Danh sách lịch đặt</Button>
+                <Button
+                  onClick={() => {
+                    navigate(`/rooms/bookings/${room?.id}`);
+                  }}
+                >
+                  Danh sách lịch đặt
+                </Button>
                 {invoice && <Button onClick={handleCheckOut}>Trả phòng</Button>}
 
-                <Button onClick={() => {navigate(`/rooms/update/${room?.id}`)}}>Cập nhật thông tin</Button>
+                {!isEmployee && (
+                  <Button
+                    onClick={() => {
+                      navigate(`/rooms/update/${room?.id}`);
+                    }}
+                  >
+                    Cập nhật thông tin
+                  </Button>
+                )}
               </ButtonGroup>
             </Box>
           </Stack>
