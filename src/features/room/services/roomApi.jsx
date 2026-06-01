@@ -82,3 +82,23 @@ export const getRoomInfoApi = async (roomId) => {
 
     return response.data.result;
 };
+
+export const getBookingsOfRoomApi = async ({
+    roomId,
+    pageNumber = 0,
+    pageSize = 10,
+}) => {
+
+    const response = await axiosClient.get(
+        "/api/booking/ofRoom",
+        {
+            params: {
+                roomId,
+                pageNumber,
+                pageSize,
+            },
+        }
+    );
+
+    return response.data.result;
+};

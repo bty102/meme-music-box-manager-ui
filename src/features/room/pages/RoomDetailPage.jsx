@@ -215,6 +215,8 @@ function RoomDetailPage() {
             <Box sx={{ display: "flex", justifyContent: "center" }}>
               <ButtonGroup>
                 <Button onClick={() => {navigate(`/rooms/invoices/${room?.id}`)}}>Danh sách hóa đơn</Button>
+
+                <Button onClick={() => {navigate(`/rooms/bookings/${room?.id}`)}}>Danh sách lịch đặt</Button>
                 {invoice && <Button onClick={handleCheckOut}>Trả phòng</Button>}
               </ButtonGroup>
             </Box>

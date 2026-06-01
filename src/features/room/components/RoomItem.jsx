@@ -177,6 +177,7 @@ function RoomItem({ room }) {
                     <Typography
                         variant="h5"
                         fontWeight={700}
+                        sx={{fontWeight: 700}}
                     >
                         Phòng {room.roomNumber}
                     </Typography>
@@ -195,7 +196,7 @@ function RoomItem({ room }) {
                     Khu vực: {room.area?.areaName}
                 </Typography>
 
-                <Stack spacing={1.5} mt={2}>
+                <Stack spacing={1.5} mt={2} sx={{mt: 2}}>
 
                     <Box
                         display="flex"
@@ -252,7 +253,7 @@ function RoomItem({ room }) {
 
                 </Stack>
 
-                <Box>
+                <Box sx={{display: "flex", justifyContent: "flex-end", mt: 1}}>
                     <ButtonGroup variant="text" size="small">
                         <Button onClick={handleOpenRoom}>Mở phòng</Button>
                         <Button onClick={handleViewDetail}>Xem chi tiết</Button>
