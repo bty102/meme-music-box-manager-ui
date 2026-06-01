@@ -241,3 +241,18 @@ export const getInvoicesCreatedByApi = async ({
 
     return response.data.result;
 };
+
+export const exportInvoicePdfApi = async (
+    invoiceId
+) => {
+
+    const response =
+        await axiosClient.get(
+            `/api/invoices/pdf/${invoiceId}`,
+            {
+                responseType: "blob",
+            }
+        );
+
+    return response.data;
+};
