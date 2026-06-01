@@ -2,8 +2,11 @@ import { Box, Button, ButtonGroup } from "@mui/material";
 import RoomSearchForm from "./RoomSearchForm";
 import { useDispatch, useSelector } from "react-redux";
 import { searchRooms } from "../store/roomThunk";
+import { useNavigate } from "react-router-dom";
 
 function RoomFuncMenu() {
+
+    const navigate = useNavigate();
 
     const dispatch = useDispatch();
 
@@ -35,7 +38,7 @@ function RoomFuncMenu() {
         <Box sx={{display: "flex", flexDirection: "row", gap: 3, alignItems: "center", justifyContent: "space-between"}}>
             <Box>
                 <ButtonGroup>
-                    <Button>Thêm phòng</Button>
+                    <Button onClick={() => {navigate("/rooms/create")}}>Thêm phòng</Button>
                 </ButtonGroup>
             </Box>
             <Box>

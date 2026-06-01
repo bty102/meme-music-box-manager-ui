@@ -12,6 +12,8 @@ import RoomInvoiceListPage from "../features/room/pages/RoomInvoiceListPage"
 import InvoiceListPage from "../features/invoice/pages/InvoiceListPage"
 import RoomBookingListPage from "../features/room/pages/RoomBookingListPage"
 import BookingDetailPage from "../features/booking/pages/BookingDetailPage"
+import RoomCreatePage from "../features/room/pages/RoomCreatePage"
+import RoomUpdatePage from "../features/room/pages/RoomUpdatePage"
 
 const publicRoutes = [
     {path: '/login', page: LoginPage, layout: Fragment},
@@ -29,6 +31,8 @@ const privateRoutes = [
     {path: '/invoices', page: InvoiceListPage, layout: MainLayout},
     {path: '/rooms/bookings/:roomId', page: RoomBookingListPage, layout: MainLayout},
     {path: '/bookings/detail/:bookingId', page: BookingDetailPage, layout: MainLayout},
+    {path: '/rooms/create', page: RoomCreatePage, layout: MainLayout},
+    {path: '/rooms/update/:roomId', page: RoomUpdatePage, layout: MainLayout},
 ]
 
 export { publicRoutes, privateRoutes }

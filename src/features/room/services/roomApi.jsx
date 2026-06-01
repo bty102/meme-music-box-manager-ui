@@ -102,3 +102,49 @@ export const getBookingsOfRoomApi = async ({
 
     return response.data.result;
 };
+
+export const createRoomApi = async ({
+    roomNumber,
+    capacity,
+    hourlyRate,
+    areaId,
+}) => {
+
+    const response = await axiosClient.post(
+        "/api/rooms",
+        {
+            roomNumber,
+            capacity,
+            hourlyRate,
+            areaId,
+        }
+    );
+
+    return response.data.result;
+};
+
+export const updateRoomApi = async (
+    roomId,
+    {
+        roomNumber,
+        capacity,
+        hourlyRate,
+        isActive,
+        areaId,
+    }
+) => {
+
+    const response =
+        await axiosClient.put(
+            `/api/rooms/${roomId}`,
+            {
+                roomNumber,
+                capacity,
+                hourlyRate,
+                isActive,
+                areaId,
+            }
+        );
+
+    return response.data.result;
+};

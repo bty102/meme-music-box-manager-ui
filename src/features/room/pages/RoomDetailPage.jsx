@@ -213,11 +213,13 @@ function RoomDetailPage() {
             <Divider />
 
             <Box sx={{ display: "flex", justifyContent: "center" }}>
-              <ButtonGroup>
+              <ButtonGroup orientation="vertical" variant="text">
                 <Button onClick={() => {navigate(`/rooms/invoices/${room?.id}`)}}>Danh sách hóa đơn</Button>
 
                 <Button onClick={() => {navigate(`/rooms/bookings/${room?.id}`)}}>Danh sách lịch đặt</Button>
                 {invoice && <Button onClick={handleCheckOut}>Trả phòng</Button>}
+
+                <Button onClick={() => {navigate(`/rooms/update/${room?.id}`)}}>Cập nhật thông tin</Button>
               </ButtonGroup>
             </Box>
           </Stack>
