@@ -19,6 +19,7 @@ import ReceiptIcon from "@mui/icons-material/Receipt";
 import PeopleIcon from "@mui/icons-material/People";
 import { useNavigate } from "react-router-dom";
 import GridViewIcon from "@mui/icons-material/GridView";
+import Inventory2Icon from "@mui/icons-material/Inventory2";
 
 const drawerWidth = 260;
 
@@ -83,6 +84,14 @@ function Sidebar() {
           </ListItemIcon>
 
           <ListItemText primary="Areas" />
+        </ListItemButton>
+
+        <ListItemButton onClick={() => navigate("/products")}>
+          <ListItemIcon>
+            <Inventory2Icon />
+          </ListItemIcon>
+
+          <ListItemText primary="Products" />
         </ListItemButton>
 
         {/* <ListItemButton>

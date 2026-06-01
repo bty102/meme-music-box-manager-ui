@@ -18,6 +18,11 @@ import AreaListPage from "../features/area/pages/AreaListPage"
 import AreaDetailPage from "../features/area/pages/AreaDetailPage"
 import AreaCreatePage from "../features/area/pages/AreaCreatePage"
 import AreaUpdatePage from "../features/area/pages/AreaUpdatePage"
+import ProductListPage from "../features/product/pages/ProductListPage"
+import ProductDetailPage from "../features/product/pages/ProductDetailPage"
+import ProductCreatePage from "../features/product/pages/ProductCreatePage"
+import ProductUpdatePage from "../features/product/pages/ProductUpdatePage"
+import ProductUpdateImagePage from "../features/product/pages/ProductUpdateImagePage"
 
 const publicRoutes = [
     {path: '/login', page: LoginPage, layout: Fragment},
@@ -41,6 +46,11 @@ const privateRoutes = [
     {path: '/areas/detail/:areaId', page: AreaDetailPage, layout: MainLayout},
     {path: '/areas/create', page: AreaCreatePage, layout: MainLayout},
     {path: '/areas/update/:areaId', page: AreaUpdatePage, layout: MainLayout},
+    {path: '/products', page: ProductListPage, layout: MainLayout},
+    {path: '/products/detail/:productId', page: ProductDetailPage, layout: MainLayout},
+    {path: '/products/create', page: ProductCreatePage, layout: MainLayout},
+    {path: '/products/update/:productId', page: ProductUpdatePage, layout: MainLayout},
+    {path: '/products/updateImage/:productId', page: ProductUpdateImagePage, layout: MainLayout},
 ]
 
 export { publicRoutes, privateRoutes }
