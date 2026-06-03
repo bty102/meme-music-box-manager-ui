@@ -22,6 +22,7 @@ import GridViewIcon from "@mui/icons-material/GridView";
 import Inventory2Icon from "@mui/icons-material/Inventory2";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import { useSelector } from "react-redux";
+import QueryStatsIcon from "@mui/icons-material/QueryStats";
 
 const drawerWidth = 260;
 
@@ -107,6 +108,16 @@ function Sidebar() {
             </ListItemIcon>
 
             <ListItemText primary="Point Discounts" />
+          </ListItemButton>
+        )}
+
+        {isAdmin && (
+          <ListItemButton onClick={() => navigate("/statistics")}>
+            <ListItemIcon>
+              <QueryStatsIcon />
+            </ListItemIcon>
+
+            <ListItemText primary="Statistics" />
           </ListItemButton>
         )}
 
