@@ -382,7 +382,7 @@ function RoomBookingListPage() {
                                         />
 
                                         <Button
-                                            variant="contained"
+                                            variant="text"
                                             startIcon={
                                                 <VisibilityIcon />
                                             }

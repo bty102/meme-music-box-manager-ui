@@ -97,6 +97,7 @@ function LoginPage() {
                         textAlign="center"
                         mb={4}
                         fontWeight="bold"
+                        sx={{textAlign: "center", mb: 4, fontWeight: "bold"}}
                     >
                         Login
                     </Typography>

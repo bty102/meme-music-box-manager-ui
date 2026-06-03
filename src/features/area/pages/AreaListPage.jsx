@@ -75,7 +75,7 @@ function AreaListPage() {
             mb: 3,
           }}
         >
-          <Typography variant="h5" fontWeight={700}>
+          <Typography variant="h5" fontWeight={700} sx={{fontWeight: 700}}>
             Danh sách khu vực
           </Typography>
 
@@ -153,7 +153,7 @@ function AreaListPage() {
                 </Box>
 
                 <Button
-                  variant="contained"
+                  variant="text"
                   startIcon={<VisibilityIcon />}
                   onClick={() => navigate(`/areas/detail/${area.id}`)}
                   sx={{

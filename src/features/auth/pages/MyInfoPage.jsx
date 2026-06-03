@@ -70,6 +70,7 @@ function MyInfoPage() {
                             item
                             xs={12}
                             md={4}
+                            size={{xs: 12, md: 4 }}
                         >
 
                             <Stack
@@ -117,6 +118,7 @@ function MyInfoPage() {
                             item
                             xs={12}
                             md={8}
+                            size={{xs: 12, md: 8 }}
                         >
 
                             <Typography
@@ -141,6 +143,7 @@ function MyInfoPage() {
                                     item
                                     xs={12}
                                     sm={6}
+                                    size={{xs: 12, sm: 6 }}
                                 >
 
                                     <Typography
@@ -162,6 +165,7 @@ function MyInfoPage() {
                                     item
                                     xs={12}
                                     sm={6}
+                                    size={{xs: 12, sm: 6 }}
                                 >
 
                                     <Typography
@@ -182,6 +186,7 @@ function MyInfoPage() {
                                 <Grid
                                     item
                                     xs={12}
+                                    size={{xs: 12}}
                                 >
 
                                     <Typography
@@ -232,6 +237,7 @@ function MyInfoPage() {
                                                 item
                                                 xs={12}
                                                 sm={6}
+                                                size={{xs: 12, sm: 6 }}
                                             >
 
                                                 <Typography
@@ -255,6 +261,7 @@ function MyInfoPage() {
                                                 item
                                                 xs={12}
                                                 sm={6}
+                                                size={{xs: 12, sm: 6}}
                                             >
 
                                                 <Typography
@@ -278,6 +285,7 @@ function MyInfoPage() {
                                                 item
                                                 xs={12}
                                                 sm={6}
+                                                size={{xs: 12, sm: 6}}
                                             >
 
                                                 <Typography
@@ -301,6 +309,7 @@ function MyInfoPage() {
                                                 item
                                                 xs={12}
                                                 sm={6}
+                                                size={{xs: 12, sm: 6}}
                                             >
 
                                                 <Typography
@@ -326,6 +335,7 @@ function MyInfoPage() {
                                                 item
                                                 xs={12}
                                                 sm={6}
+                                                size={{xs: 12, sm: 6}}
                                             >
 
                                                 <Typography
@@ -348,6 +358,7 @@ function MyInfoPage() {
                                             <Grid
                                                 item
                                                 xs={12}
+                                                size={{xs: 12}}
                                             >
 
                                                 <Typography

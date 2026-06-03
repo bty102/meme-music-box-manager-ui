@@ -154,12 +154,14 @@ function RoomInvoiceListPage() {
                     spacing={1}
                     alignItems="center"
                     mb={3}
+                    sx={{alignItems: "center", mb: 3}}
                 >
                     <MeetingRoomIcon />
 
                     <Typography
                         variant="h5"
                         fontWeight={700}
+                        sx={{fontWeight: 700}}
                     >
                         Thông tin phòng
                     </Typography>
@@ -185,6 +187,7 @@ function RoomInvoiceListPage() {
 
                         <Typography
                             fontWeight={700}
+                            sx={{fontWeight: 700}}
                         >
                             {room?.roomNumber}
                         </Typography>
@@ -200,6 +203,7 @@ function RoomInvoiceListPage() {
 
                         <Typography
                             fontWeight={700}
+                            sx={{fontWeight: 700}}
                         >
                             {
                                 room?.area
@@ -218,6 +222,7 @@ function RoomInvoiceListPage() {
 
                         <Typography
                             fontWeight={700}
+                            sx={{fontWeight: 700}}
                         >
                             {room?.capacity}
                             {" "}
@@ -236,6 +241,7 @@ function RoomInvoiceListPage() {
                         <Typography
                             fontWeight={700}
                             color="primary"
+                            sx={{fontWeight: 700}}
                         >
                             {formatCurrency(
                                 room?.hourlyRate
@@ -279,12 +285,14 @@ function RoomInvoiceListPage() {
                     spacing={1}
                     alignItems="center"
                     mb={3}
+                    sx={{alignItems: "center", mb: 3}}
                 >
                     <ReceiptLongIcon />
 
                     <Typography
                         variant="h5"
                         fontWeight={700}
+                        sx={{fontWeight: 700}}
                     >
                         Danh sách hóa đơn
                     </Typography>
@@ -324,6 +332,7 @@ function RoomInvoiceListPage() {
                                             fontWeight={
                                                 700
                                             }
+                                            sx={{fontWeight: 700}}
                                         >
                                             {
                                                 invoice.invoiceCode
@@ -385,7 +394,7 @@ function RoomInvoiceListPage() {
                                         />
 
                                         <Button
-                                            variant="contained"
+                                            variant="text"
                                             startIcon={
                                                 <VisibilityIcon />
                                             }

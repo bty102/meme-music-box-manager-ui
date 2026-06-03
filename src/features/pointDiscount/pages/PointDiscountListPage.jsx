@@ -412,6 +412,12 @@ function PointDiscountListPage() {
                                 key={
                                     discount.id
                                 }
+                                size={ {
+                                    xs: 12,
+                                    md: 6,
+                                    lg: 4,
+                                }
+                                }
                             >
 
                                 <Card

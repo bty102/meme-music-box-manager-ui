@@ -197,12 +197,14 @@ function InvoiceListPage() {
                     spacing={1}
                     alignItems="center"
                     mb={3}
+                    sx={{alignItems: "center", mb: 3}}
                 >
                     <ReceiptLongIcon />
 
                     <Typography
                         variant="h5"
                         fontWeight={700}
+                        sx={{fontWeight: 700}}
                     >
                         Danh sách
                         hóa đơn
@@ -333,7 +335,7 @@ function InvoiceListPage() {
                                         />
 
                                         <Button
-                                            variant="contained"
+                                            variant="text"
                                             startIcon={
                                                 <VisibilityIcon />
                                             }
