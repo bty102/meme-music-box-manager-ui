@@ -23,6 +23,7 @@ import Inventory2Icon from "@mui/icons-material/Inventory2";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import { useSelector } from "react-redux";
 import QueryStatsIcon from "@mui/icons-material/QueryStats";
+import CardMembershipIcon from "@mui/icons-material/CardMembership";
 
 const drawerWidth = 260;
 
@@ -120,6 +121,14 @@ function Sidebar() {
             <ListItemText primary="Statistics" />
           </ListItemButton>
         )}
+
+        <ListItemButton onClick={() => navigate("/members")}>
+          <ListItemIcon>
+            <CardMembershipIcon />
+          </ListItemIcon>
+
+          <ListItemText primary="Members" />
+        </ListItemButton>
 
         {/* <ListItemButton>
 

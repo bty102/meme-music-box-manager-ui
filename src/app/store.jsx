@@ -7,6 +7,7 @@ import roomReducer from "../features/room/store/roomSlice";
 import invoiceReducer from "../features/invoice/store/invoiceSlice";
 import productReducer from "../features/product/store/productSlice";
 import pointDiscountReducer from "../features/pointDiscount/store/pointDiscountSlice";
+import memberReducer from "../features/member/store/memberSlice";
 
 export const store = configureStore({
   reducer: {
@@ -16,5 +17,6 @@ export const store = configureStore({
     invoice: invoiceReducer,
     product: productReducer,
     pointDiscount: pointDiscountReducer,
+    member: memberReducer,
   },
 });

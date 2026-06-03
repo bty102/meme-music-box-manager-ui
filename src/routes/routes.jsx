@@ -25,6 +25,8 @@ import ProductUpdatePage from "../features/product/pages/ProductUpdatePage"
 import ProductUpdateImagePage from "../features/product/pages/ProductUpdateImagePage"
 import PointDiscountListPage from "../features/pointDiscount/pages/PointDiscountListPage"
 import RevenueStatisticsPage from "../features/statistics/pages/RevenueStatisticsPage"
+import MemberListPage from "../features/member/pages/MemberListPage"
+import MemberDetailPage from "../features/member/pages/MemberDetailPage"
 
 const publicRoutes = [
     {path: '/login', page: LoginPage, layout: Fragment},
@@ -55,6 +57,8 @@ const privateRoutes = [
     {path: '/products/updateImage/:productId', page: ProductUpdateImagePage, layout: MainLayout},
     {path: '/pointDiscounts', page: PointDiscountListPage, layout: MainLayout},
     {path: '/statistics', page: RevenueStatisticsPage, layout: MainLayout},
+    {path: '/members', page: MemberListPage, layout: MainLayout},
+    {path: '/members/detail/:memberAccountId', page: MemberDetailPage, layout: MainLayout},
 ]
 
 export { publicRoutes, privateRoutes }
