@@ -24,6 +24,7 @@ import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import { useSelector } from "react-redux";
 import QueryStatsIcon from "@mui/icons-material/QueryStats";
 import CardMembershipIcon from "@mui/icons-material/CardMembership";
+import BadgeIcon from "@mui/icons-material/Badge";
 
 const drawerWidth = 260;
 
@@ -129,6 +130,16 @@ function Sidebar() {
 
           <ListItemText primary="Members" />
         </ListItemButton>
+
+        {isAdmin && (
+          <ListItemButton onClick={() => navigate("/employees")}>
+            <ListItemIcon>
+              <BadgeIcon />
+            </ListItemIcon>
+
+            <ListItemText primary="Employees" />
+          </ListItemButton>
+        )}
 
         {/* <ListItemButton>
 

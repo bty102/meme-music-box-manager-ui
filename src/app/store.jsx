@@ -8,6 +8,7 @@ import invoiceReducer from "../features/invoice/store/invoiceSlice";
 import productReducer from "../features/product/store/productSlice";
 import pointDiscountReducer from "../features/pointDiscount/store/pointDiscountSlice";
 import memberReducer from "../features/member/store/memberSlice";
+import employeeReducer from "../features/employee/store/employeeSlice";
 
 export const store = configureStore({
   reducer: {
@@ -18,5 +19,6 @@ export const store = configureStore({
     product: productReducer,
     pointDiscount: pointDiscountReducer,
     member: memberReducer,
+    employee: employeeReducer,
   },
 });

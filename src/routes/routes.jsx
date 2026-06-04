@@ -27,6 +27,9 @@ import PointDiscountListPage from "../features/pointDiscount/pages/PointDiscount
 import RevenueStatisticsPage from "../features/statistics/pages/RevenueStatisticsPage"
 import MemberListPage from "../features/member/pages/MemberListPage"
 import MemberDetailPage from "../features/member/pages/MemberDetailPage"
+import EmployeeListPage from "../features/employee/pages/EmployeeListPage"
+import EmployeeDetailPage from "../features/employee/pages/EmployeeDetailPage"
+import EmployeeCreatePage from "../features/employee/pages/EmployeeCreatePage"
 
 const publicRoutes = [
     {path: '/login', page: LoginPage, layout: Fragment},
@@ -59,6 +62,9 @@ const privateRoutes = [
     {path: '/statistics', page: RevenueStatisticsPage, layout: MainLayout},
     {path: '/members', page: MemberListPage, layout: MainLayout},
     {path: '/members/detail/:memberAccountId', page: MemberDetailPage, layout: MainLayout},
+    {path: '/employees', page: EmployeeListPage, layout: MainLayout},
+    {path: '/employees/detail/:employeeId', page: EmployeeDetailPage, layout: MainLayout},
+    {path: '/employees/create', page: EmployeeCreatePage, layout: MainLayout},
 ]
 
 export { publicRoutes, privateRoutes }
